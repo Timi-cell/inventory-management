@@ -47,7 +47,7 @@ export async function createProduct(formData: FormData) {
   } catch (error) {
     // Handle actual errors, e.g., database connection issues
     console.error("Error creating product:", error);
-    return { success: false, message: "Failed to create product" };
+    throw new Error("Failed to create product");
   } finally {
     if (redirectPath) {
       redirect(redirectPath);
