@@ -20,18 +20,19 @@ export default async function DashboardPage() {
   ]);
 
   const totalValue = allProducts.reduce(
-    (sum, product): number => sum + Number(product.price) * Number(product.quantity),
-    0
+    (sum: number, product) =>
+      sum + Number(product.price) * Number(product.quantity),
+    0,
   );
 
   const inStockCount = allProducts.filter((p) => Number(p.quantity) > 5).length;
 
   const lowStockCount = allProducts.filter(
-    (p) => Number(p.quantity) < 5 && Number(p.quantity) >= 1
+    (p) => Number(p.quantity) < 5 && Number(p.quantity) >= 1,
   ).length;
 
   const outOfStockCount = allProducts.filter(
-    (p) => Number(p.quantity) === 0
+    (p) => Number(p.quantity) === 0,
   ).length;
 
   const inStockPercentage =
@@ -164,8 +165,8 @@ export default async function DashboardPage() {
                   product.quantity === 0
                     ? 0
                     : product.quantity <= (product.lowStockAt || 5)
-                    ? 1
-                    : 2;
+                      ? 1
+                      : 2;
 
                 const bgColors = [
                   "bg-red-600",
